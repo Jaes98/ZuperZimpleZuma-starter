@@ -3,6 +3,7 @@ import * as controller from "./controller.js"
 
 // TODO: Export animation functions
 // ALSO: Remember to import the same functions in view
+export {animateNewBall, animateCannonBall, animateRemoveBalls, animateExpandSpaceForBall};
 
 // *********************************
 // *                               *
@@ -15,7 +16,8 @@ function animateNewBall(model, newBall) {
   view.updateDisplay(model)
 
   // Find the visualBall for this newBall
-  const visualBall; // TODO: get the visual Ball from the view
+  const visualBall = view.getVisaulBall(newBall); // TODO: get the visual Ball from the view
+
 
   // We only want to animate the image - not the entire div with the button
   const onlyImg = visualBall.firstElementChild;

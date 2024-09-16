@@ -2,6 +2,7 @@ import * as model from "./model.js";
 import * as view from "./view.js";
 
 // TODO: Export functions used by the view
+export { addNewBall };
 
 window.addEventListener("load", init);
 
@@ -27,7 +28,10 @@ function createInitialChain() {
 }
 
 // TODO: Add controller functions to handle things happening in the view
-
+function addNewBall() {
+  model.addRandomBall();
+  view.updateDisplay(model);
+}
 
 
 // **** ANIMATIONS ****
