@@ -1,6 +1,19 @@
 import SimpleLinkedList from "./simplelinkedlist.js";
 
-export { init, getFirstBall, getCannonBall, getNextBall, loadCannon, addRandomBall, addBall, insertBallAfter, numberOfBalls, checkMatches, removeMatches, dump };
+export {
+  init,
+  getFirstBall,
+  getCannonBall,
+  getNextBall,
+  loadCannon,
+  addRandomBall,
+  addBall,
+  insertBallAfter,
+  numberOfBalls,
+  checkMatches,
+  removeMatches,
+  dump,
+};
 
 const list = new SimpleLinkedList();
 
@@ -24,11 +37,12 @@ function dump() {
 
 // **** WRAPPERS ****
 function addRandomBall() {
-  list.add(randomBall());
+  return list.add(randomBall());
 }
 
 function addBall(ball) {
   list.add(ball);
+  return ball;
 }
 
 function getFirstBall() {
@@ -46,6 +60,7 @@ function insertBallAfter(ball, node) {
   if (matches.length > 2) {
     removeMatches(matches);
   }
+  return lookAt;
 }
 
 function numberOfBalls() {
@@ -70,15 +85,20 @@ function getCannonBall() {
 function checkMatches(node) {
   const matches = [node];
 
-  let lookAt = node.prev;
+  let lookAt = node.next;
 
-  while (lookAt && lookAt.data == node.data) {
-    matches.push(lookAt);
-    lookAt = lookAt.prev;
-  }
-  while (lookAt && lookAt.data == node.data) {
+  while (lookAt && lookAt.data === node.data) {
+    console.log(lookAt.data + " looking right");
     matches.push(lookAt);
     lookAt = lookAt.next;
+  }
+
+  lookAt = node.prev;
+
+  while (lookAt && lookAt.data === node.data) {
+    console.log(lookAt.data + " looking left");
+    matches.push(lookAt);
+    lookAt = lookAt.prev;
   }
 
   return matches;

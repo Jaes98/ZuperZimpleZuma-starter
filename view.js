@@ -16,10 +16,6 @@ function init() {
 function addNewBall() {
   console.log("View clicked add new ball");
   // notify controller
-  console.log(
-    "TODO: Notify controller that we want to add a new ball to the chain!"
-  );
-  // TODO: Notify controller that we want to add a new ball to the chain!
   controller.addNewBall();
 }
 
@@ -49,7 +45,7 @@ function updateDisplay(model) {
   let ball = model.getFirstBall();
   while (ball != null) {
     // add visual ball
-    console.log(ball);
+    // console.log(ball);
     const visualBall = createVisualBall(ball.data);
     visualChain.append(visualBall);
     // add button next to ball
@@ -86,13 +82,10 @@ function addButtonTo(visualBall, ballModel) {
   visualBall.append(button);
   // handle click
   button.addEventListener("click", () => {
-    console.log(`Clicked button after ${ballModel.data}`);
-    console.log(ballModel);
+    // console.log(`Clicked button after ${ballModel.data}`);
+    // console.log(ballModel);
     // notify controller
-    console.log(
-      "TODO: Notify controller that we want to insert the cannonball after this!"
-    );
-    // TODO: Notify controller that we want to insert the cannonball after this!
+    controller.addBallToChain(ballModel);
   });
 }
 
